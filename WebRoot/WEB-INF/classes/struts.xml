@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<package name="struts2" extends="struts-default">
+<action name="login" class="model.UserLoginAction">
+<result name="studentlogin">/WEB-INF/student/LoginSuccess.jsp</result>
+<result name="teacherlogin">/WEB-INF/teacher/LoginSuccess.jsp</result>
+<result name="adminlogin">/WEB-INF/tea_stu/LoginSuccess.jsp</result>
+<result name="loginfail">/WEB-INF/student/loginfail.jsp</result>
+</action>
+
+<!-- ajax -->
+<action name="validate_code" class="validatecode.ValidateCodeAction"></action>
+<action name="validate_id" class="validatecode.ValidateId"></action>
+<action name="validate_input" class="validatecode.validateinput"></action>
+<!-- login -->
+  <action name="login_a" class="view.slogin_a">
+  <result name="login_a">/WEB-INF/student/login_a.jsp</result>
+  </action>
+   <action name="login_b" class="view.slogin_b">
+  <result name="login_b">/WEB-INF/student/login_b.jsp</result>
+  </action>
+   <action name="login_c" class="view.slogin_c">
+  <result name="login_c">/WEB-INF/student/login_c.jsp</result>
+  </action>
+</package>
+</struts>    
