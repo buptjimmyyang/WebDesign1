@@ -14,6 +14,7 @@
         <property name="myeclipse.connection.profile">yang</property>
          <!-- 配置映射文件 -->
     <mapping resource="mapping.xml"/>
+   
     </session-factory>
 
 </hibernate-configuration>

@@ -3,11 +3,68 @@
 "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
+<!-- 登录用户映射 -->
 <class name="bean.user" table="user">
 <id name="id" column="id" type="int"></id>
 <property name="type" column="type"></property>
 <property name="password" column="password"></property>
+</class>
+<!-- 学生映射 -->
+<class name="bean.student" table="student">
+<id name="id" column="id"></id>
+<property name="type" column="type"></property>
 <property name="name" column="name"></property>
 <property name="grade" column="grade"></property>
 </class>
+<!-- 老师映射 -->
+<class name="bean.teacher" table="teacher">
+<id name="id" column="id"></id>
+<property name="name" column="name"></property>
+<property name="type" column="type"></property>
+<property name="institute" column="institute"></property>
+</class>
+<!-- 教师课程映射 -->
+<class name="bean.course" table="course">
+<id  name="c_id" column="c_id">
+<generator class="increment"></generator> </id>
+<property name="t_id" column="t_id"></property>
+<property name="c_name" column="c_name"></property>
+</class>
+<!-- 学生课程映射 -->
+<class name="bean.s_course" table="s_course">
+<id name="id" column="id">
+<generator class="increment"></generator>
+</id>
+<property name="c_id" column="c_id"></property>
+<property name="s_id" column="s_id"></property>
+</class>
+<!-- 教师上传作业映射表 -->
+<class name="bean.t_job" table="t_job">
+<id name="id" column="id">
+<generator class="increment"></generator>
+</id>
+<property name="t_id" column="t_id"></property>
+<property name="title" column="title"></property>
+<property name="content" column="content"></property>
+<property name="grade" column="grade"></property>
+<property name="datetime" column="datetime"></property>
+<property name="c_name" column="c_name"></property>
+<property name="real_title" column="real_title"></property>
+</class>
+
+<!-- 学生上传映射表 -->
+<class name="bean.s_job" table="s_job">
+<id name="id" column="id">
+<generator class="increment"></generator>
+</id>
+<property name="s_id" column="s_id"></property>
+<property name="t_id" column="t_id"></property>
+<property name="title" column="title"></property>
+<property name="real_title" column="real_title"></property>
+<property name="grade" column="grade"></property>
+<property name="datetime" column="datetime"></property>
+<property name="c_name" column="c_name"></property>
+
+</class>
 </hibernate-mapping>
+

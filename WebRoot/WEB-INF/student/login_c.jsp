@@ -1,39 +1,45 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page import="bean.t_job" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'login_a.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
 
+    
+    <title></title>
+   
+	
   </head>
   
    <body>
-  学生
-   <s:property value="#request.id"/>
-   <s:property value="#request.password"/>
-  
-  <s:property value="#request.validatecode"/>
-  <%
-  
-  //String val=(String)session.getValue("backid");
-     out.print("sss"+"sss"+request.getSession().getAttribute("backid"));
-   %>
+  <h3 align="center">作业通知</h3>
+<center>
+   <table border="1" width="550" style="text-align:center;align:center;">
+   <tr>
+   <td>题目</td>
    
+   <td>内容</td>
+   <td>课程</td>
+   <td>布置时间</td>
+   </tr>
+   <s:iterator id="row" value="records">
+   <tr>
+   <td> <s:property value="#row.title"/></td>
+    <td> <a href="" text-decoration="none">点击查看详细内容</a></td>
+     <td> <s:property value="#row.c_name"/></td>
+      <td> <s:property value="#row.datetime"/></td>
+      </tr>
+   </s:iterator>
+   </table>
+  </center>
+  <br>
+  <div style="align:bottom;text-align:center;">
+ <s:iterator id="page" value="{1,2,3,4,5}">
+ <a href="login_c.action?currentrows=<s:property value="#page"/>">
+ <s:property value="#page"/>
+ </a>&nbsp;
+  </s:iterator>
+ </div>
   </body>
 </html>

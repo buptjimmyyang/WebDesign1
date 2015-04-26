@@ -1,9 +1,10 @@
 package model;
-//用户登录action
-//一次修改
+
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.List;
+
+import modelFactory.show_tjob;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -55,7 +56,7 @@ public void setValidatecode(String validatecode) {
 }
 public String execute() throws UnsupportedEncodingException{
 	//String validate=(String) ActionContext.getContext().getSession().get("validation_code");
-	
+	//ActionContext.getContext().getSession().put("userid", id);
 //	System.out.println("输入验证码为"+validate);
 //	System.out.println("真实验证码为"+validatecode);
 //	System.out.println(type);
@@ -86,8 +87,10 @@ public String execute() throws UnsupportedEncodingException{
 	{
 		
 		if(u1.getId()==id&&(u1).getPassword().equals(password)&&type.equals("学生")&&u1.getType().equals(type))
-		{
-			return "studentlogin";}
+		{   
+			show_tjob.showjob(id);
+			return "studentlogin";
+			}
 			
 		else if(u1.getId()==id&&(u1).getPassword().equals(password)&&type.equals("老师")&&u1.getType().equals(type))
 			return "teacherlogin";

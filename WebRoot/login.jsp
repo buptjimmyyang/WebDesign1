@@ -89,7 +89,7 @@ onpropertychange 当属性改变发生该事件 */
   </td>
   <td width="400px">
   <div>
-  <form action="login">
+  <form action="login" method="post">
   <table>
   <tr><td width="50px"></td>
   <td id="two"><h6>用户登录</h6></td>

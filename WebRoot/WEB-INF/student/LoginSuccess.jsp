@@ -9,11 +9,11 @@
   
   <frameset rows="15%,*">
 
-<frame src="login_a.action">
+<frame src="login_a.action" name="top">
 
 <frameset cols="20%,*">
-<frame src="login_b.action">
-<frame src="login_c.action">
+<frame src="login_b.action" name="left">
+<frame src="login_c.action" name="right">
 </frameset>
 
 </frameset>

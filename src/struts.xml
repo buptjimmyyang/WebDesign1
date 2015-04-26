@@ -23,5 +23,9 @@
    <action name="login_c" class="view.slogin_c">
   <result name="login_c">/WEB-INF/student/login_c.jsp</result>
   </action>
+  <!-- 文件上传 -->
+  <action name="fileup" class ="view.fileup">
+  <result name="fileup">/WEB-INF/student/fileup.jsp</result>
+  </action>
 </package>
 </struts>    
