@@ -6,19 +6,16 @@
   <head>
    <title>登录成功</title>
  </head>
-  
-  <body>
-  老师
-  <s:property value="#request.id"/>
-   <s:property value="#request.password"/>
-  
-  <s:property value="#request.validatecode"/>
-  <s:property value="#validatecode"/>
-  <%
-  
-  //String val=(String)session.getValue("backid");
-     out.print("sss"+"sss"+request.getSession().getAttribute("backid"));
-   %>
-    This is my JSP page. <br>
-  </body>
+
+ <frameset rows="15%,*"  >
+
+<frame src="t_login.action?dis=0" name="top">
+
+<frameset cols="20%,*">
+<frame src="t_login.action?dis=1" name="left">
+<frame src="t_login.action?dis=2" name="right">
+</frameset>
+
+</frameset>
+ 
 </html>

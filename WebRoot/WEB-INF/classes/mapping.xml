@@ -64,7 +64,28 @@
 <property name="grade" column="grade"></property>
 <property name="datetime" column="datetime"></property>
 <property name="c_name" column="c_name"></property>
-
+<property name="topic" column="topic"></property>
+</class>
+<!--发帖映射表 -->
+<class name="bean.t_essay" table="t_essay">
+<id name="essay_id" column="essay_id">
+<generator class="increment"></generator>
+</id>
+<property name="title" column="title"></property>
+<property name="content" column="content"></property>
+<property name="t_id" column="t_id"></property>
+<property name="datetime" column="datetime"></property>
+</class>
+<!-- 回复帖子 -->
+<class name="bean.reply" table="reply">
+<id name="key1" column="key1">
+<generator class="increment"></generator>
+</id>
+<property name="essay_id" column="essay_id"></property>
+<property name="id" column="id"></property>
+<property name="content" column="content"></property>
+<property name="type" column="type"></property>
+<property name="datetime" column="datetime"></property>
 </class>
 </hibernate-mapping>
 

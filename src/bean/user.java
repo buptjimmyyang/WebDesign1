@@ -5,6 +5,9 @@ private int id;
 private String type;
 private String password;
 
+
+
+
 public int getId() {
 	return id;
 }

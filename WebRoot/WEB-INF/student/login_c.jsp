@@ -13,7 +13,7 @@
   </head>
   
    <body>
-  <h3 align="center">作业通知</h3>
+  <h1 align="center">作业通知</h1>
 <center>
    <table border="1" width="550" style="text-align:center;align:center;">
    <tr>
@@ -26,7 +26,7 @@
    <s:iterator id="row" value="records">
    <tr>
    <td> <s:property value="#row.title"/></td>
-    <td> <a href="" text-decoration="none">点击查看详细内容</a></td>
+    <td> <a href="job_content.action?id=<s:property value="#row.id"/>" text-decoration="none">点击查看详细内容</a></td>
      <td> <s:property value="#row.c_name"/></td>
       <td> <s:property value="#row.datetime"/></td>
       </tr>

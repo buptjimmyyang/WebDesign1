@@ -31,18 +31,19 @@ public class slogin_c {
 	}
 
 	public String execute(){
+		int rows=2;//设置一页显示的行数
 		String grade= (String) ActionContext.getContext().getSession().get("s_grade");
 		Session session=HibernateSessionFactory.getSession();
-		String hql="from t_job where grade= :grade";
+		String hql="from t_job where grade= :grade order by datetime desc";
 		Query query=session.createQuery(hql);
-		query.setFirstResult((currentrows-1)*1);
-		query.setMaxResults(1);
+		query.setFirstResult((currentrows-1)*rows);
+		query.setMaxResults(rows);
 		query.setString("grade",grade);
 		List<t_job> u1=query.list();
 		for(t_job t:u1)
 		{
 			records.add(t);
-			System.out.print(t.getTitle());
+		
 			
 		}
 			

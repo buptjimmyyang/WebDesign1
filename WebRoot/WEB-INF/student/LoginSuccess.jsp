@@ -6,8 +6,8 @@
   <head>
    <title>登录成功</title>
  </head>
-  
-  <frameset rows="15%,*">
+
+ <frameset rows="15%,*"  >
 
 <frame src="login_a.action" name="top">
 
@@ -17,6 +17,5 @@
 </frameset>
 
 </frameset>
-  
  
 </html>

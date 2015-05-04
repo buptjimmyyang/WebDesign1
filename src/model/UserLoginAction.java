@@ -69,7 +69,7 @@ public String execute() throws UnsupportedEncodingException{
 //		System.out.print(u1.getId()+" "+u1.getPassword()+u1.getType());
 //	}
 //	session.close();
-	System.out.println();
+	
 	Session session=HibernateSessionFactory.getSession();
 	String hql="from user where id =  :id";
 	Query query =session.createQuery(hql);
@@ -87,13 +87,18 @@ public String execute() throws UnsupportedEncodingException{
 	{
 		
 		if(u1.getId()==id&&(u1).getPassword().equals(password)&&type.equals("学生")&&u1.getType().equals(type))
-		{   
+		{   ActionContext.getContext().getSession().put("u_id",id);
+		ActionContext.getContext().getSession().put("type","学生");
 			show_tjob.showjob(id);
 			return "studentlogin";
 			}
 			
 		else if(u1.getId()==id&&(u1).getPassword().equals(password)&&type.equals("老师")&&u1.getType().equals(type))
+			{
+			ActionContext.getContext().getSession().put("u_id",id);
+			ActionContext.getContext().getSession().put("type","老师");
 			return "teacherlogin";
+			}
 		else if(u1.getId()==id&&(u1).getPassword().equals(password)&&type.equals("管理员")&&u1.getType().equals(type))
 			return "adminlogin";
 		else 

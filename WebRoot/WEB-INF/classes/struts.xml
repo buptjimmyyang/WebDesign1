@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
+<constant name="struts.i18n.encoding" value="utf-8"></constant>
+<constant name="struts.multipart.saveDir" value="C:/work/tomcat/temp"></constant>
+<constant name="struts.custom.i18n.resources" value="mess"></constant>
+<constant name="struts.multipart.maxSize" value="104857600000"></constant>
 <package name="struts2" extends="struts-default">
 <action name="login" class="model.UserLoginAction">
 <result name="studentlogin">/WEB-INF/student/LoginSuccess.jsp</result>
@@ -9,11 +13,12 @@
 <result name="loginfail">/WEB-INF/student/loginfail.jsp</result>
 </action>
 
+
 <!-- ajax -->
 <action name="validate_code" class="validatecode.ValidateCodeAction"></action>
 <action name="validate_id" class="validatecode.ValidateId"></action>
 <action name="validate_input" class="validatecode.validateinput"></action>
-<!-- login -->
+<!-- slogin -->
   <action name="login_a" class="view.slogin_a">
   <result name="login_a">/WEB-INF/student/login_a.jsp</result>
   </action>
@@ -23,9 +28,94 @@
    <action name="login_c" class="view.slogin_c">
   <result name="login_c">/WEB-INF/student/login_c.jsp</result>
   </action>
-  <!-- 文件上传 -->
+  <!-- 学生列表位置 -->
+  <action name="stu_essay_list" class="model.stu_essay_list">
+  <result name="success">/WEB-INF/student/essay_list.jsp</result>
+  </action>
+  <!-- 查看教师发布作业详情 -->
+  <action name="job_content" class="view.show_content">
+  <result name="success">/WEB-INF/student/job_content.jsp</result>
+  </action>
+  <!-- 学生文件上传前的预处理 -->
   <action name="fileup" class ="view.fileup">
   <result name="fileup">/WEB-INF/student/fileup.jsp</result>
   </action>
+  <!-- 学生上传文件处理 -->
+  <action name="stu_up" class="model.stu_up">
+  <result name="stu_upsuccess">/WEB-INF/student/stu_upsuccess.jsp </result>
+  <result name="input">/WEB-INF/student/fileup.jsp</result>
+ <!-- 文件上传拦截器 -->
+ <interceptor-ref name="fileUpload">
+ <param name="maximumSize">10485760</param>
+ </interceptor-ref>
+ <interceptor-ref name="defaultStack"></interceptor-ref>
+  </action>
+  <!-- 上传历史查看 -->
+  <action name="upHistory" class="view.stu_uphistory">
+  <result name="success">/WEB-INF/student/upHistory.jsp </result>
+  </action>
+  <!-- 下载文件设置 -->
+  <action name="download" class="view.down_load">
+   <result name="success" type="stream">
+  <!-- 获取输出流 -->
+ <param name="inputName">download1</param>
+ 
+ <!-- 设置下载文件名 -->
+ <param name="contentDisposition">attachment;filename=${filename}</param>
+  </result></action>
+  <!-- 学生修改密码 -->
+  <action name="stu_UpPassword" class="view.stu_UpPassword">
+  <result name="success">/WEB-INF/student/updatePassword.jsp</result>
+  </action>
+  <action name="s_commit_update" class="model.update_PassAction">
+  <result name="success">/WEB-INF/student/res_up_Password.jsp</result></action>
+  <!-- tlogin -->
+  <action name="t_login" class="view.t_login">
+  <result name="s0">/WEB-INF/teacher/login_a.jsp</result>
+   <result name="s1">/WEB-INF/teacher/login_b.jsp</result>
+    <result name="s2">/WEB-INF/teacher/login_c.jsp</result>
+  </action>
+  <!-- 教师查收作业 -->
+  <action name="t_set_receive" class="view.t_set_receive">
+  <result name="success">/WEB-INF/teacher/receive_job.jsp</result>
+  </action>
+  <action name="receive_job" class="model.receive_job">
+  <result name="success">/WEB-INF/teacher/res_receive.jsp</result>
+  </action>
+ 
+  <!-- 教师发布作业 -->
+  <action name="t_set_receive1" class="view.t_set_receive">
+  <result name="success">/WEB-INF/teacher/publish_job.jsp</result>
+  </action>
+  <action name="publish_job" class="model.publish_job">
+  <result name="success">/WEB-INF/teacher/publish_job_success.jsp</result>
+   <result name="input">/WEB-INF/teacher/publish_job.jsp</result>
+   <!-- 文件上传拦截器 -->
+ <interceptor-ref name="fileUpload">
+ <param name="maximumSize">10485760</param>
+ </interceptor-ref>
+ <interceptor-ref name="defaultStack"></interceptor-ref>
+  </action>
+  <!-- 文章列表 -->
+  <action name="essay_list" class="model.essay_list">
+  <result name="success">/WEB-INF/teacher/essay_list.jsp</result>
+  </action>
+  <!-- 显示文章内容 -->
+  <action  name="essay_content" class="model.reply">
+  <result name="success">/WEB-INF/teacher/reply.jsp</result>
+  </action>
+  <!-- 添加回复 -->
+  <action name="add_reply" class="model.add_reply">
+  <result name="success">/WEB-INF/teacher/add_success.jsp</result></action>
+  
+  <!-- 管理员导入excel文件 -->
+
+<action name="userup1" class="model.excelAction">
+<result name="success">/WEB-INF/tea_stu/excelres.jsp</result>
+</action>
+<!-- 读取word -->
+<action name="readWord" class="model.readWord">
+<result name="success">/login.jsp</result>
+</action>
 </package>
 </struts>    

@@ -97,32 +97,32 @@ onpropertychange 当属性改变发生该事件 */
    </tr>
   <tr>
   <td width="70px" >账号:</td>
-  <td id="two"><input type="text" name="id" id="uid" onblur="unfocusId()" onfocus="onfucusid()"/></td>
-  <td id="three"><div id="validateid" style="color:red;"></div></td></tr>
+  <td class="two"><input type="text" name="id" id="uid" onblur="unfocusId()" onfocus="onfucusid()"/></td>
+  <td class="three"><div id="validateid" style="color:red;"></div></td></tr>
   <tr>
   <td width="70px" >密码:</td>
-  <td id="two"><input type="password" name="password"/></td>
-  <td id="three"></td></tr>
+  <td class="two"><input type="password" name="password"/></td>
+  <td class="three"></td></tr>
   <tr>
   <td width="70px">类型:</td>
-  <td id="two"><select name="type" >
+  <td class="two"><select name="type" >
       <option value="学生" >学生</option>
       <option value="老师" >老师</option>
       <option value="管理员" >管理员</option>
       </select>    </td>
-  <td id="three"></td></tr>
+  <td class="three"></td></tr>
   <tr>
   <td width="70px">验证码:</td>
   <td ><input type="text" name="validatecode" id="validateinput" onblur="validatecode1()" onfocus="onfucusid1()"></td>
-  <td id="three"><div id="validatetxt" style="color:red;"></div></td></tr>
+  <td class="three"><div id="validatetxt" style="color:red;"></div></td></tr>
   
   <tr>
   <td width="70px"></td>
   <td> <img id="img_validation_code" src="validate_code.action" onClick="refresh()"/></td>
-  <td id="three"></td></tr>
+  <td class="three"></td></tr>
   <tr>
   <td width="70px"></td>
-  <td id="two"> <button type="submit" value="登录" style="width:80px;">登录</button></td>
+  <td class="two"> <button type="submit" value="登录" style="width:80px;">登录</button></td>
   </tr>
   </table>
    </form>

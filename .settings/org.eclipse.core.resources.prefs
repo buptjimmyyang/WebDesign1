@@ -1,3 +1,5 @@
 eclipse.preferences.version=1
 encoding//WebRoot/WEB-INF/student/fileup.jsp=UTF-8
 encoding//WebRoot/WEB-INF/student/login_c.jsp=UTF-8
+encoding//WebRoot/WEB-INF/teacher/essay_list.jsp=UTF-8
+encoding//WebRoot/WEB-INF/teacher/publish_job_success.jsp=UTF-8
