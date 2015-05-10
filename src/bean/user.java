@@ -1,5 +1,7 @@
 package bean;
+import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class user {
 private int id;
 private String type;

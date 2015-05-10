@@ -22,7 +22,7 @@ public static void save(int t_id,String title,String content,String grade,String
 	job.setGrade(grade);
 	job.setC_name(c_name);
 	job.setReal_title(path);
-	job.setDatetime(new Date());//ÉèÖÃÊ±¼ä
+	job.setDatetime(new Date());//ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 	
 
 	Transaction tx=null;
@@ -36,7 +36,7 @@ public static void save(int t_id,String title,String content,String grade,String
 		
 	}
 	catch(Exception e){
-		System.out.print("Ìí¼ÓÊ§°Ü£¡£¡£¡");
+		System.out.print("ä¿å­˜publishå¤±è´¥");
 		
 		tx.rollback();
 		

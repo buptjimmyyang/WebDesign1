@@ -9,7 +9,7 @@
   </head>
   
   <body>
-  <center><h1>我的上传历史</h1></center>
+  <h2 style="text-align:center;">我的上传历史</h2>
     <br>
     <center>
     <%

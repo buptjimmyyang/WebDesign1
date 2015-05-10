@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <head>
 
-<style>
+<style type="text/css">
 ul
 {
 list-style-type:none;
@@ -20,8 +20,8 @@ a:link,a:visited
 display:block;
 font-weight:bold;
 color:blue;
-background-color:#bebebe;
-width:300px;
+background-color:#808000;
+width:100%;
 text-align:center;
 padding:10px;
 text-decoration:none;
@@ -52,7 +52,7 @@ background-color:#cc0000;
 </ul>
 
 <div id="CalendarMain">
-			<div id="title"><a class="selectBtn month" href="javascript:" onclick="CalendarHandler.CalculateLastMonthDays();"><</a><a class="selectBtn selectYear" href="javascript:" onClick="CalendarHandler.CreateSelectYear();">2014年</a><a class="selectBtn selectMonth" onClick="CalendarHandler.CreateSelectMonth()">6月</a> <a class="selectBtn nextMonth" href="javascript:" onClick="CalendarHandler.CalculateNextMonthDays();">></a><a class="selectBtn currentDay" href="javascript:" onClick="CalendarHandler.CreateCurrentCalendar(0,0,0);">今天</a></div>
+			<div id="title"><a class="selectBtn month" ></a><a class="selectBtn selectYear" href="javascript:" >2014年</a><a class="selectBtn selectMonth" >6月</a> <a class="selectBtn nextMonth" href="javascript:" >></a><a class="selectBtn currentDay" href="javascript:" >今天</a></div>
 			<div id="context">
 				<div class="week">
 					<h3> 一 </h3>

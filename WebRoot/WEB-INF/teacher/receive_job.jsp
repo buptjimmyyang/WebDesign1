@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </head>
 <body>
  
-<center><h1>查收作业</h1></center>
+<h2 style="text-align:center;">查收作业</h2>
     <br>
     <center>
     <form action="receive_job">

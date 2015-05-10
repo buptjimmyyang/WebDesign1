@@ -57,8 +57,8 @@ public void setValidatecode(String validatecode) {
 public String execute() throws UnsupportedEncodingException{
 	//String validate=(String) ActionContext.getContext().getSession().get("validation_code");
 	//ActionContext.getContext().getSession().put("userid", id);
-//	System.out.println("ÊäÈëÑéÖ¤ÂëÎª"+validate);
-//	System.out.println("ÕæÊµÑéÖ¤ÂëÎª"+validatecode);
+//	System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½Îª"+validate);
+//	System.out.println("ï¿½ï¿½Êµï¿½ï¿½Ö¤ï¿½ï¿½Îª"+validatecode);
 //	System.out.println(type);
 //	Session session=HibernateSessionFactory.getSession();
 //	Criteria crit=session.createCriteria(user.class);
@@ -77,7 +77,7 @@ public String execute() throws UnsupportedEncodingException{
 	List<user> u=query.list();
 	session.close();
 	user u1=u.get(0);
-	//equels±È½ÏÁ½¸öÖµÊÇ·ñÏàµÈ ==ÊÇ·ñÊÇÍ¬Ò»¶ÔÏóµÄÒıÓÃ
+	//equelsï¿½È½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½Ç·ï¿½ï¿½ï¿½ï¿½ ==ï¿½Ç·ï¿½ï¿½ï¿½Í¬Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	if(u.size()==0)
 	{
 		return "loginfail";
@@ -86,21 +86,23 @@ public String execute() throws UnsupportedEncodingException{
 	else
 	{
 		
-		if(u1.getId()==id&&(u1).getPassword().equals(password)&&type.equals("Ñ§Éú")&&u1.getType().equals(type))
+		if(u1.getId()==id&&(u1).getPassword().equals(password)&&type.equals("å­¦ç”Ÿ")&&u1.getType().equals(type))
 		{   ActionContext.getContext().getSession().put("u_id",id);
-		ActionContext.getContext().getSession().put("type","Ñ§Éú");
+		ActionContext.getContext().getSession().put("type","å­¦ç”Ÿ");
 			show_tjob.showjob(id);
 			return "studentlogin";
 			}
 			
-		else if(u1.getId()==id&&(u1).getPassword().equals(password)&&type.equals("ÀÏÊ¦")&&u1.getType().equals(type))
+		else if(u1.getId()==id&&(u1).getPassword().equals(password)&&type.equals("è€å¸ˆ")&&u1.getType().equals(type))
 			{
 			ActionContext.getContext().getSession().put("u_id",id);
-			ActionContext.getContext().getSession().put("type","ÀÏÊ¦");
+			ActionContext.getContext().getSession().put("type","è€å¸ˆ");
 			return "teacherlogin";
 			}
-		else if(u1.getId()==id&&(u1).getPassword().equals(password)&&type.equals("¹ÜÀíÔ±")&&u1.getType().equals(type))
+		else if(u1.getId()==id&&(u1).getPassword().equals(password)&&type.equals("ç®¡ç†å‘˜")&&u1.getType().equals(type))
+		{ActionContext.getContext().getSession().put("u_id",id);
 			return "adminlogin";
+		}
 		else 
 		{
 			return "loginfail";

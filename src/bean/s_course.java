@@ -1,9 +1,11 @@
 package bean;
 
-public class s_course {
+import java.io.Serializable;
+
+public class s_course implements Serializable {//设置复合主键必须添加Serializable接口
 private int s_id;
 private int c_id;
-private int id;
+
 public int getS_id() {
 	return s_id;
 }
@@ -16,11 +18,6 @@ public int getC_id() {
 public void setC_id(int c_id) {
 	this.c_id = c_id;
 }
-public int getId() {
-	return id;
-}
-public void setId(int id) {
-	this.id = id;
-}
+
 
 }

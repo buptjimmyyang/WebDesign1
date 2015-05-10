@@ -13,7 +13,7 @@
   </head>
   
    <body>
-  <h1 align="center">作业通知</h1>
+  <h2 align="center">作业通知</h2>
 <center>
    <table border="1" width="550" style="text-align:center;align:center;">
    <tr>

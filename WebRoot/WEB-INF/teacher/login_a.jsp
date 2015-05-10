@@ -1,28 +1,23 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
-    
-    <title>My JSP 'login_a.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
-  </head>
+  <style type="text/css">
+  body{background-color:green;
+  background-image:url(picture/top.jpg);
+  background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-size:100% 100%;
+  }
+  </style>
+    </head>
   
-  <body>
-    This is my JSP page. <br>
+  <body >
+   
+<div >
+<h1 style="text-align:center; color:blue;">作业管理系统</h1>
+</div>
+
   </body>
 </html>

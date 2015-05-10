@@ -39,15 +39,15 @@ public String execute() throws IOException{
 	Query query =session.createQuery(hql);
 	query.setInteger("id",id);
 	List<user> u=query.list();
-	//System.out.print("ajaxÇëÇó"+id);
-	//ÉèÖÃsession
+	//System.out.print("ajaxï¿½ï¿½ï¿½ï¿½"+id);
+	//ï¿½ï¿½ï¿½ï¿½session
 	//HttpSession s1= ServletActionContext.getRequest().getSession();
 	 
 	
 	
 	//System.out.println(ActionContext.getContext().getSession().get("backid"));
 	session.close();
-	//ĞŞ¸ÄÊä³öÁ÷
+	//ï¿½Ş¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     response=ServletActionContext.getResponse();
     response.setContentType("text/xml;charset=utf-8");
     response.setHeader("Cache-Control", "no-cache");
@@ -61,7 +61,7 @@ public String execute() throws IOException{
    // out.write("ajax response");
     if(u.isEmpty())
 		
-    out.write("ÓÃ»§Ãû²»´æÔÚ");
+    out.write("ç”¨æˆ·åä¸å­˜åœ¨ï¼");
 	
     out.close();
 	return null;

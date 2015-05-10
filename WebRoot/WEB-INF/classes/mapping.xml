@@ -26,17 +26,16 @@
 <!-- 教师课程映射 -->
 <class name="bean.course" table="course">
 <id  name="c_id" column="c_id">
-<generator class="increment"></generator> </id>
+</id>
 <property name="t_id" column="t_id"></property>
 <property name="c_name" column="c_name"></property>
 </class>
 <!-- 学生课程映射 -->
 <class name="bean.s_course" table="s_course">
-<id name="id" column="id">
-<generator class="increment"></generator>
-</id>
-<property name="c_id" column="c_id"></property>
-<property name="s_id" column="s_id"></property>
+<composite-id >
+<key-property name="c_id" column="c_id"></key-property>
+<key-property name="s_id" column="s_id"></key-property>
+</composite-id>
 </class>
 <!-- 教师上传作业映射表 -->
 <class name="bean.t_job" table="t_job">

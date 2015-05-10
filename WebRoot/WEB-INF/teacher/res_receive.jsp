@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     }
     catch(Exception e){}
    %>
-  <center><h1>作业提交情况</h1></center>
+  <h2 style="text-align:center;">作业提交情况</h2>
   <br>
   <center>
    <table  border="1" width="550" style="text-align:center;align:center;">

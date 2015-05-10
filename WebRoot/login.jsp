@@ -18,7 +18,12 @@ onpropertychange 当属性改变发生该事件 */
    
    </script>
 <link type="text/css" href="css/login.css" rel="stylesheet"/>
-
+<!-- 添加easyui -->
+  <script type="text/javascript" src="js/easyui/jquery-easyui-1.4.2/jquery.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="js/easyui/jquery-easyui-1.4.2/themes/default/easyui.css"> 
+   <link rel="stylesheet" type="text/css" href="js/easyui/jquery-easyui-1.4.2/themes/icon.css">
+   <script type="text/javascript" src="js/easyui/jquery-easyui-1.4.2/jquery.easyui.min.js"></script> 
+    <script type="text/javascript" src="js/easyui/jquery-easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script> 
   </head>
   
   <body >
@@ -97,7 +102,7 @@ onpropertychange 当属性改变发生该事件 */
    </tr>
   <tr>
   <td width="70px" >账号:</td>
-  <td class="two"><input type="text" name="id" id="uid" onblur="unfocusId()" onfocus="onfucusid()"/></td>
+  <td class="two"><input type="text" class="easyui-validatebox" required=true missingmessage="用户名不能为空"name="id" id="uid" onblur="unfocusId()" onfocus="onfucusid()"/></td>
   <td class="three"><div id="validateid" style="color:red;"></div></td></tr>
   <tr>
   <td width="70px" >密码:</td>

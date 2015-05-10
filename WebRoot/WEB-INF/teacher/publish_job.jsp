@@ -12,7 +12,7 @@
         //oFCKeditor.BasePath   = "/FCKEditTest/fckeditor/";
         oFCKeditor.ReplaceTextarea();
          oFCKeditor.
-       oFCKeditor.Height = "350px";
+       oFCKeditor.Height = "250px";
         }
     </script>
   </head>  
@@ -66,7 +66,7 @@ for(int i=0;i<grade.size();i++)
   <br>
   内容:
   <br>
-   <textarea  style="height:350px;width:90%;" name="content">请输入内容</textarea> 
+   <textarea  style="height:250px;width:90%;" name="content">请输入内容</textarea> 
    <br>
    
    <div style="position:absolute;left:20px;bottom:30px;">

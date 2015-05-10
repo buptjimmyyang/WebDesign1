@@ -30,10 +30,10 @@ import org.hibernate.Transaction;
 import modelFactory.ExcelWorkSheet;
 import bean.HibernateSessionFactory;
 import bean.user;
-public class excelAction {//¶ÁÈ¡excelÎÄ¼þ
-	private File userup;//¶ÁÈ¡ÎÄ¼þ
-	private String userupFileName;//»ñµÃÎÄ¼þÃû
-	private ExcelWorkSheet<user> excelWorkSheet;//ÉèÖÃexcelÃ¿Ò»Ò³µÄÐÅÏ¢
+public class excelAction {//ï¿½ï¿½È¡excelï¿½Ä¼ï¿½
+	private File userup;//ï¿½ï¿½È¡ï¿½Ä¼ï¿½
+	private String userupFileName;//ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
+	private ExcelWorkSheet<user> excelWorkSheet;//ï¿½ï¿½ï¿½ï¿½excelÃ¿Ò»Ò³ï¿½ï¿½ï¿½ï¿½Ï¢
 	public File getUserup() {
 		return userup;
 	}
@@ -64,11 +64,11 @@ public class excelAction {//¶ÁÈ¡excelÎÄ¼þ
     }
 	
 	public String execute() throws FileNotFoundException, IOException{
-
+System.out.print(userupFileName);
        Workbook book = createWorkBook(new FileInputStream(userup)); 
-		Sheet sheet=book.getSheetAt(0);//»ñµÃµÚÒ»Ò³
-		excelWorkSheet=new ExcelWorkSheet<user>();//ÉèÖÃÊý¾ÝÐÅÏ¢ Ö÷ÒªÊÇÎªÁËÌí¼ÓÉÏÊý¾ÝºóµÄÏÔÊ¾
-		Row firstRow=sheet.getRow(0);//»ñµÃµÚÒ»ÐÐ ¼´ÁÐÃ÷
+		Sheet sheet=book.getSheetAt(0);//ï¿½ï¿½Ãµï¿½Ò»Ò³
+		excelWorkSheet=new ExcelWorkSheet<user>();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ ï¿½ï¿½Òªï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ýºï¿½ï¿½ï¿½ï¿½Ê¾
+		Row firstRow=sheet.getRow(0);//ï¿½ï¿½Ãµï¿½Ò»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Iterator<Cell> iterator = firstRow.iterator(); 
 	
 		 List<String> cellNames = new ArrayList<String>();  
@@ -77,15 +77,15 @@ public class excelAction {//¶ÁÈ¡excelÎÄ¼þ
 	        }  
 	    	
 	        excelWorkSheet.setColumns(cellNames); 
-	        Session session=HibernateSessionFactory.getSession();//´ò¿ªÊý¾Ý¿â×¼±¸±£´æ¶ÁÈëµÄÊý¾Ý
+	        Session session=HibernateSessionFactory.getSession();//ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	        Transaction tx=null;
 	        for (int i = 1; i <= sheet.getLastRowNum(); i++) { 
-	        	 if(userupFileName.toLowerCase().endsWith("xls")){//ÈôÎªxls¸ñÊ½
+	        	 if(userupFileName.toLowerCase().endsWith("xls")){//ï¿½ï¿½Îªxlsï¿½ï¿½Ê½
 	        		 Row ros = sheet.getRow(i); 
 	        		 HSSFCell cell0 = (HSSFCell) ros.getCell(0);   
 	        		 HSSFCell cell2 = (HSSFCell) ros.getCell(2);  
-	 	            cell0.setCellType(Cell.CELL_TYPE_STRING); //°Ñ¸Ãµ¥Ôª¸ñÉèÖÃ³ÉStringÀàÐÍ  
-	 	            cell2.setCellType(Cell.CELL_TYPE_STRING); //°Ñ¸Ãµ¥Ôª¸ñÉèÖÃ³ÉStringÀàÐÍ
+	 	            cell0.setCellType(Cell.CELL_TYPE_STRING); //ï¿½Ñ¸Ãµï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½Ã³ï¿½Stringï¿½ï¿½ï¿½ï¿½  
+	 	            cell2.setCellType(Cell.CELL_TYPE_STRING); //ï¿½Ñ¸Ãµï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½Ã³ï¿½Stringï¿½ï¿½ï¿½ï¿½
 	 	           user user = new user();  
 		            user.setId(Integer.parseInt(cell0.getStringCellValue()));  
 		            user.setType(ros.getCell(1).getStringCellValue());  
@@ -97,7 +97,7 @@ public class excelAction {//¶ÁÈ¡excelÎÄ¼þ
 		        		tx.commit();
 		      }
 		        	catch(Exception e){
-		        		System.out.print("Ìí¼ÓÊ§°Ü£¡£¡£¡");
+		        		System.out.print("å¯¼å…¥å¤±è´¥");
 		        		tx.rollback();}
 	        	 }
 	        	 else
@@ -105,8 +105,8 @@ public class excelAction {//¶ÁÈ¡excelÎÄ¼þ
 	        		 Row ros = sheet.getRow(i); 
 	 	            XSSFCell cell0 = (XSSFCell) ros.getCell(0);   
 	 	            XSSFCell cell2 = (XSSFCell) ros.getCell(2);  
-	 	            cell0.setCellType(Cell.CELL_TYPE_STRING); //°Ñ¸Ãµ¥Ôª¸ñÉèÖÃ³ÉStringÀàÐÍ  Èç¹û¸ñ×ÓÀïµÄÊý¾ÝÎªÊý×ÖÄ¬ÈÏÎªnumberÀàÐÍ
-	 	            cell2.setCellType(Cell.CELL_TYPE_STRING); //°Ñ¸Ãµ¥Ôª¸ñÉèÖÃ³ÉStringÀàÐÍ
+	 	            cell0.setCellType(Cell.CELL_TYPE_STRING); //ï¿½Ñ¸Ãµï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½Ã³ï¿½Stringï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Îªnumberï¿½ï¿½ï¿½ï¿½
+	 	            cell2.setCellType(Cell.CELL_TYPE_STRING); //ï¿½Ñ¸Ãµï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½Ã³ï¿½Stringï¿½ï¿½ï¿½ï¿½
 	 	           user user = new user();  
 		            user.setId(Integer.parseInt(cell0.getStringCellValue()));  
 		            user.setType(ros.getCell(1).getStringCellValue());  
@@ -118,7 +118,7 @@ public class excelAction {//¶ÁÈ¡excelÎÄ¼þ
 			        		tx.commit();
 			      }
 			        	catch(Exception e){
-			        		System.out.print("Ìí¼ÓÊ§°Ü£¡£¡£¡");
+			        		System.out.print("å¯¼å…¥å¤±è´¥");
 			        		tx.rollback();}
 	        	 }
 	       }//for

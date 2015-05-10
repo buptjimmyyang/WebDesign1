@@ -16,7 +16,7 @@
   <body >
    
 <div >
-<h1 style="text-align:center;">作业管理系统</h1>
+<h1 style="text-align:center; color:blue;">作业管理系统</h1>
 </div>
 
   </body>

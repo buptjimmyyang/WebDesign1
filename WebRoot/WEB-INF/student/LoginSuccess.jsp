@@ -7,13 +7,13 @@
    <title>登录成功</title>
  </head>
 
- <frameset rows="15%,*"  >
+ <frameset rows="15%,*"  border="0">
 
 <frame src="login_a.action" name="top">
 
 <frameset cols="20%,*">
-<frame src="login_b.action" name="left">
-<frame src="login_c.action" name="right">
+<frame src="login_b.action" name="left"  border="0" scrolling="no">
+<frame src="login_c.action" name="right"  border="0" scrolling="no">
 </frameset>
 
 </frameset>

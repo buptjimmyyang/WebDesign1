@@ -5,14 +5,15 @@
 <constant name="struts.multipart.saveDir" value="C:/work/tomcat/temp"></constant>
 <constant name="struts.custom.i18n.resources" value="mess"></constant>
 <constant name="struts.multipart.maxSize" value="104857600000"></constant>
+
 <package name="struts2" extends="struts-default">
+<!-- 登录系统 -->
 <action name="login" class="model.UserLoginAction">
 <result name="studentlogin">/WEB-INF/student/LoginSuccess.jsp</result>
 <result name="teacherlogin">/WEB-INF/teacher/LoginSuccess.jsp</result>
-<result name="adminlogin">/WEB-INF/tea_stu/LoginSuccess.jsp</result>
+<result name="adminlogin">/WEB-INF/tea_stu/login_success.jsp</result>
 <result name="loginfail">/WEB-INF/student/loginfail.jsp</result>
 </action>
-
 
 <!-- ajax -->
 <action name="validate_code" class="validatecode.ValidateCodeAction"></action>
@@ -107,15 +108,29 @@
   <!-- 添加回复 -->
   <action name="add_reply" class="model.add_reply">
   <result name="success">/WEB-INF/teacher/add_success.jsp</result></action>
+ 
   
   <!-- 管理员导入excel文件 -->
 
 <action name="userup1" class="model.excelAction">
 <result name="success">/WEB-INF/tea_stu/excelres.jsp</result>
 </action>
+<action name="add_excel" class="model.admin_add_excel">
+</action>
+<action name="huixian" class="modelFactory.response_excel"></action>
+<action name="excel_Db" class="modelFactory.excel_Db"></action>
+<!-- 管理员查找表 -->
+<action name="search" class="model.searchAction"></action>
+<action name="search_student" class="modelFactory.search_student"></action>
 <!-- 读取word -->
 <action name="readWord" class="model.readWord">
 <result name="success">/login.jsp</result>
 </action>
+<!-- 管理员添加数据 -->
+<action name="add_data" class="model.admin_addAction">
+</action>
+
+
+
 </package>
 </struts>    
