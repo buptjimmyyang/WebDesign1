@@ -70,6 +70,10 @@
   </action>
   <action name="s_commit_update" class="model.update_PassAction">
   <result name="success">/WEB-INF/student/res_up_Password.jsp</result></action>
+  <!-- 显示显示成绩 -->
+  <action name="showStudentScore" class="model.showStudentScore">
+  <result name="success">/WEB-INF/student/showScore.jsp</result>
+  </action>
   <!-- tlogin -->
   <action name="t_login" class="view.t_login">
   <result name="s0">/WEB-INF/teacher/login_a.jsp</result>
@@ -83,7 +87,23 @@
   <action name="receive_job" class="model.receive_job">
   <result name="success">/WEB-INF/teacher/res_receive.jsp</result>
   </action>
- 
+ <!-- 教师评分学生作业 -->
+ <action name="evaluate_set" class="view.evaluate_set">
+ <result name="success">/WEB-INF/teacher/public_evaluate.jsp</result>
+</action>
+<action name="submit_evaluate_set" class="model.teacherValueAction">
+ <result name="success">/WEB-INF/teacher/evaluate_page.jsp</result>
+ </action>
+ <action name="finish_value_score" class="model.finish_value_score">
+ <result name="success">/WEB-INF/student/res_up_Password.jsp</result>
+ </action>
+ <!-- 教师查看评分 -->
+ <action name="setShowValue" class="view.setShowValue">
+ <result name="success">/WEB-INF/teacher/setShowValue.jsp</result>
+ </action>
+ <action name="showvalue" class="model.teacherShowValue">
+ <result name="success">/WEB-INF/teacher/showValue.jsp</result>
+ </action>
   <!-- 教师发布作业 -->
   <action name="t_set_receive1" class="view.t_set_receive">
   <result name="success">/WEB-INF/teacher/publish_job.jsp</result>
@@ -121,7 +141,20 @@
 <action name="excel_Db" class="modelFactory.excel_Db"></action>
 <!-- 管理员查找表 -->
 <action name="search" class="model.searchAction"></action>
+<!-- 管理员对学生的操作 -->
 <action name="search_student" class="modelFactory.search_student"></action>
+<action name="updata_student" class="modelFactory.updata_student"></action>
+<action name="delete_student" class="modelFactory.delete_student"></action>
+<!-- 管理员对老师的操作 -->
+<action name="search_teacher" class="modelFactory.search_teacher"></action>
+<action name="updata_teacher" class="modelFactory.updata_teacher"></action>
+<action name="delete_teacher" class="modelFactory.delete_teacher"></action>
+<!-- 管理员对学生课程信息的管理 -->
+<action name="search_s_course" class="modelFactory.search_s_course"></action>
+<action name="delete_s_course" class="modelFactory.delete_s_course"></action>
+<!-- 管理员对教师课程的管理 -->
+<action name="search_course" class="modelFactory.search_course"></action>
+<action name="delete_course" class="modelFactory.delete_course"></action>
 <!-- 读取word -->
 <action name="readWord" class="model.readWord">
 <result name="success">/login.jsp</result>

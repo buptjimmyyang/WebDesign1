@@ -69,21 +69,21 @@ public String execute() throws IOException{
 	String savepath=null;
 	String savename=title;
 	int id=(Integer) ActionContext.getContext().getSession().get("u_id");
-	if(myFileFileName==null)//ÉèÖÃÉÏ´«ÎÄ¼şÃû²»ÄÜÎª¿Õ
+	if(myFileFileName==null)//å¦‚æœæ–‡ä»¶åä¸ºç©ºä¸ä¿å­˜
 	{savepath="no";
 	}
 	else{
 		
 	String teacher="";
 	Session session=HibernateSessionFactory.getSession();
-	String hql=" select name from teacher where id = :id";//²é³öÀÏÊ¦Ãû
+	String hql=" select name from teacher where id = :id";//æ‰¾åˆ°æ•™å¸ˆå
 	Query query =session.createQuery(hql);
 	query.setInteger("id", id);
 	List<String> u=query.list();
 	teacher=u.get(0);
 	session.close();
 	InputStream is=new FileInputStream(myFile);
-	String uploadPath=ServletActionContext.getServletContext().getRealPath("/WEB-INF/upload");//»ñÈ¡ÎÄ¼ş¾ø¶ÔÂ·¾¶
+	String uploadPath=ServletActionContext.getServletContext().getRealPath("/WEB-INF/upload");//è·å¾—ä¸Šä¼ æ–‡ä»¶ç»å¯¹è·¯å¾„
 	File file=new File(uploadPath+"/"+teacher);
 	if(!file.exists())
 	file.mkdir();
@@ -97,9 +97,9 @@ File toFile=new File(uploadPath+"/"+teacher,savename);
 	//System.out.print(id+""+grade+""+f_course+""+f_teacher+""+f_title+""+"----"+myFileFileName);
 	is.close();
 	os.close();
-	savepath="/WEB-INF/upload/"+teacher+"/"+title;//ÈôÎÄ¼ş´æÔÚ ±£´æÎÄ¼şµØÖ·
+	savepath="/WEB-INF/upload/"+teacher+"/"+title;//æ•°æ®åº“åœ°å€
 	}
-	save_publish.save(id, title, content, grade, c_name, savepath);//½«ÎÄ¼ş±£´æÖÁt_jobÊı¾İ±íÖĞ
+	save_publish.save(id, title, content, grade, c_name, savepath);//å°†å‘å¸ƒä¿¡æ¯ä¿å­˜åœ¨t_jobæ•°æ®åº“ä¸­
 	publish_essay.save_essay(title, c_name, id);
 	return "success";
 }

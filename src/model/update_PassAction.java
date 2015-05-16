@@ -49,7 +49,7 @@ public String execute(){
 	String pd=u.get(0);
 	
 if(password1.equals(pd)&&password2.equals(password3))
-{ActionContext.getContext().getSession().put("up_pass","更新密码成功！！");
+{ActionContext.getContext().getSession().put("up_pass","淇敼瀵嗙爜鎴愬姛");
 	Transaction tx=session.beginTransaction();
 hql="update user set password= :password3 where password = :pd and id = :id";
 	query=session.createQuery(hql);
@@ -62,7 +62,7 @@ hql="update user set password= :password3 where password = :pd and id = :id";
 	return "success";
 	}
 else 
-{ActionContext.getContext().getSession().put("up_pass","更新密码失败！！");
+{ActionContext.getContext().getSession().put("up_pass","淇敼澶辫触");
 session.close();
 	return "success";}
 	

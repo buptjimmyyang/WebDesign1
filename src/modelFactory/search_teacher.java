@@ -13,12 +13,12 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import bean.HibernateSessionFactory;
-import bean.s_job;
 import bean.student;
+import bean.teacher;
 
 import com.opensymphony.xwork2.ActionContext;
 
-public class search_student {
+public class search_teacher {
 	private String page;
 	private String rows;
 	private HttpServletResponse response;//写回响应
@@ -53,16 +53,16 @@ public class search_student {
     out = null;
     out = response.getWriter();
 	Session session=HibernateSessionFactory.getSession();
-	String hql=" from student where id like :id";//模糊查询
+	String hql=" from teacher where id like :id";//模糊查询
 	Query query =session.createQuery(hql);
 	query.setFirstResult((p-1)*r);
 	query.setMaxResults(r);
 	query.setString("id",id+"%");
-	List<student> stus=query.list();
+	List<teacher> stus=query.list();
 	
 	Query query1 =session.createQuery(hql);//查询总的记录数
 	query1.setString("id",id+"%");
-	List<student> stus1=query1.list();//总的记录数保存在stus1
+	List<teacher> stus1=query1.list();//总的记录数保存在stus1
 	 session.close();	
 	 JSONObject object=new JSONObject();
 	 object.put("total",stus1.size());

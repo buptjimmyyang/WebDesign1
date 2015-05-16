@@ -55,8 +55,8 @@ public void setMyFileFileName(String myFileFileName) {
 }
 public String execute()  throws IOException{
 	
-	if(myFileFileName==null)//ÉèÖÃÉÏ´«ÎÄ¼şÃû²»ÄÜÎª¿Õ
-	{ActionContext.getContext().getSession().put("stu_suc", "ÎÄ¼şÃû²»ÄÜÎª¿ÕÇëÖØĞÂÉÏ´«");
+	if(myFileFileName==null)//ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½
+	{ActionContext.getContext().getSession().put("stu_suc", "ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
 		return "stu_upsuccess";
 	}
 	int id=(Integer) ActionContext.getContext().getSession().get("u_id");
@@ -81,7 +81,7 @@ String visaPath="/WEB-INF/upload/"+"/"+f_teacher+"/"+f_course+"/"+f_title+"/"+gr
 		fgrade.mkdir();
 	  File content=new File(uploadPath+"/"+f_teacher+"/"+f_course+"/"+f_title+"/"+grade+"/"+savename);
 			if(content.exists()){
-				ActionContext.getContext().getSession().put("stu_suc", "´Ë´Î×÷ÒµÒÑ¾­ÉÏ´«,Çë²»ÒªÖØ¸´ÉÏ´«");
+				ActionContext.getContext().getSession().put("stu_suc", "ï¿½Ë´ï¿½ï¿½ï¿½Òµï¿½Ñ¾ï¿½ï¿½Ï´ï¿½,ï¿½ë²»Òªï¿½Ø¸ï¿½ï¿½Ï´ï¿½");
 				return "stu_upsuccess";
 			}
 	
@@ -95,9 +95,9 @@ String visaPath="/WEB-INF/upload/"+"/"+f_teacher+"/"+f_course+"/"+f_title+"/"+gr
 	//System.out.print(id+""+grade+""+f_course+""+f_teacher+""+f_title+""+"----"+myFileFileName);
 	is.close();
 	os.close();
-	//±£´æÖÁÊı¾İ¿â
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¿ï¿½
 	stu_upsave.save(id, f_teacher, f_course,getMyFileFileName(), visaPath+"/"+id+"_"+getMyFileFileName(), grade,f_title);
-	ActionContext.getContext().getSession().put("stu_suc", "³É¹¦ÉÏ´«¸ø"+f_teacher+"ÀÏÊ¦");
+	ActionContext.getContext().getSession().put("stu_suc", "å·²ç»ä¸Šä¼ æ–‡ä»¶ç»™"+f_teacher+"æˆåŠŸ");
 	return "stu_upsuccess";
 }
 }

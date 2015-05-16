@@ -86,5 +86,16 @@
 <property name="type" column="type"></property>
 <property name="datetime" column="datetime"></property>
 </class>
+<!-- 学生分数表 -->
+<class name="bean.r_score" table="r_score">
+<composite-id>
+<key-property name="t_id" column="t_id"></key-property>
+<key-property name="s_id" column="s_id"></key-property>
+<key-property name="title" column="title"></key-property>
+<key-property name="c_name" column="c_name"></key-property>
+<key-property name="grade" column="grade"></key-property>
+</composite-id>
+<property name="score" column="score"></property>
+</class>
 </hibernate-mapping>
 

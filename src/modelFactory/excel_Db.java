@@ -64,8 +64,10 @@ public String execute(){
 		try{
 					for(student stu:stus)
 					{
-			tx=session.beginTransaction();
-			session.save(stu);
+					
+			    tx=session.beginTransaction();
+			    session.save(stu);
+			
 		}
 					session.flush();//批量存储数据若不符合条件则均不能添加到数据库
 					session.clear();
@@ -75,12 +77,26 @@ public String execute(){
 	         {flag=1;
 				System.out.println("学生批量添加失败");
 	          tx.rollback();}
-		finally{
-			
-			 session.close();
+		
+	      if(flag==0)//添加student成功将数据添加到user
+	      {for(student stu:stus)
+			{
+			user u=new user();
+			u.setId(stu.getId());
+			u.setPassword("1111");//学生用户设置密码为1111
+			u.setType(stu.getType());
+	       tx=session.beginTransaction();
+	       session.save(u);
+   }
+			session.flush();//批量存储数据若不符合条件则均不能添加到数据库
+			session.clear();
+			tx.commit();
 		}
+	
+	    	  
 	      
-	if(flag==1)
+	      session.close();
+	    if(flag==1)
    		return "ffff";
 
 	}else if(table.equals("s_course"))
@@ -140,11 +156,25 @@ String response1= (String)ActionContext.getContext().getSession().get("response"
 	         {flag=1;
 				System.out.println("教师批量添加失败");
 	          tx.rollback();}
-		finally{
+		
 			
-			 session.close();
-		}
-	      
+			
+		
+	  if(flag==0) 
+	  {		for(teacher tea:teas)
+		{
+		  user u =new user();
+		  u.setId(tea.getId());
+		  u.setPassword("1111");//设置教师的默认密码也为1111
+		  u.setType(tea.getType());
+tx=session.beginTransaction();
+session.save(u);
+}
+		session.flush();//批量存储数据若不符合条件则均不能添加到数据库
+		session.clear();
+		tx.commit();
+	 }
+	  session.close();
 	if(flag==1)
    		return "ffff";
 	}

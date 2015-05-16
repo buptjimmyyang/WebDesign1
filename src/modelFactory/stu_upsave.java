@@ -42,7 +42,7 @@ public static void save(int s_id,String t_name,String course,String filename,Str
 		
 	}
 	catch(Exception e){
-		System.out.print("ÃÌº” ß∞‹£°£°£°");
+		
 		
 		tx.rollback();
 		

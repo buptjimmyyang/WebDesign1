@@ -10,9 +10,8 @@ import bean.HibernateSessionFactory;
 
 import com.opensymphony.xwork2.ActionContext;
 
-public class t_set_receive {//级联查找数据
+public class setShowValue {
 public String execute(){
-	//System.out.print("start");
 	List<String> grade= new ArrayList<String>();
 	int id =(Integer) ActionContext.getContext().getSession().get("u_id");
 	Session session=HibernateSessionFactory.getSession();
@@ -43,12 +42,8 @@ public String execute(){
 	 
 	 }
 	 ActionContext.getContext().getSession().put("grade", grade);
-	 hql="select  title from t_job  where t_id =  :id";//根据教师号找到教师所发布的题目
-	 query =session.createQuery(hql);
-		query.setInteger("id",id);
-		List<String> u4=query.list();
-		ActionContext.getContext().getSession().put("title", u4);
-		session.close();
+	 session.close();
+	
 	return "success";
 }
 }

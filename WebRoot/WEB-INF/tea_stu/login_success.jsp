@@ -30,7 +30,25 @@
         else if(src=='search')
         $('#search').dialog('open');
      });
-     //提交查询信息
+     //提交编辑学生数据
+     $('#submit_edit_student').click(function(){
+     $('#edit_student_form').form('submit',{
+     success:function(data){
+     $('#edit_student').dialog('close');
+     $('#main_content').datagrid('reload');
+     }
+     });
+     });//提交编辑学生数据
+     //提交教师学生数据
+     $('#submit_edit_teacher').click(function(){
+     $('#edit_teacher_form').form('submit',{
+     success:function(data){
+     $('#edit_teacher').dialog('close');
+     $('#main_content').datagrid('reload');
+     }
+     });
+     });//提交教师学生数据
+     //提交查询学生信息
      $('#submit_search').click(function(){
      $('#search_form').form('submit',{
     success:function(data){
@@ -41,35 +59,73 @@
     url:'search_student.action',
       // fitColumns:true,
        title:'学生信息表',
+       
        iconCls:'icon-man',
        toolbar:[{
 		iconCls: 'icon-edit',
 		text:'修改',
 		handler: function(){
-		$.ajax({
-		//url:'excel_Db.action?table=student',
-		method:'post'});
+		var rowdata=$('#main_content').datagrid('getSelections');
+		if(rowdata.length!=1)
+		$.messager.show({
+		title:'提示信息',
+		msg:'不能同时修改多行!!!',
+		iconCls: 'icon-tip'
+		});
+		else
+		{
+		$('#edit_student').dialog('open');
+		$('#edit_student_form').get(0).reset();
+		$('#edit_student_form').form('load',{
+		id:rowdata[0].id,
+		name:rowdata[0].name,
+		type:rowdata[0].type,
+		grade:rowdata[0].grade
+		});
+		
+		}
+		
 		}
 		},
 		{
 		iconCls: 'icon-cancel',
 		text:'删除',
 		handler: function(){
-		$.ajax({
-		//url:'excel_Db.action?table=student',
-		method:'post'});
+		var rowdata=$('#main_content').datagrid('getSelections');
+		if(rowdata.length>0)
+		{var ids='';
+		for(var i=0;i<rowdata.length;i++)
+		{
+		ids+=rowdata[i].id+',';
+		}
+		ids=ids.substring(0, ids.length-1);
+		$.post('delete_student.action',{ids:ids},function(data){
+		 $('#main_content').datagrid('reload');
+		});
+		}
+		else
+		
+		$.messager.show({
+		title:'提示信息',
+		msg:'必须选择一行或者多行删除!!!',
+		iconCls: 'icon-tip'
+		});
+		
 		}
 		}],
-		checkbox:true,
+		
 		striped:true,//是否显示斑马线
        pagination:true,//是否显示分页工具栏
        rownumbers:true,//是否显示行号
        pagePosition:'bottom',//定义分页工具栏的位置
        pageSize:'5',//设置一页大小
        pageList:[5,10,20,30,40,50],//可供选择的分页
-		singleSelect:true,           //只供单选
-      columns:[[{
-       field:'id',
+		//singleSelect:true,        //只供单选
+      columns:[[
+      { field:'ck',
+      checkbox:true},{
+     
+      field:'id',
        title:'用户名',
        width:200,
        align:'center'
@@ -94,17 +150,267 @@
        }
        ]]
     });
-    else if(data=='student')
+    else if(data=='teacher')
       $('#main_content').datagrid({
+    url:'search_teacher.action',
+      // fitColumns:true,
+       title:'教师信息表',
+       
+       iconCls:'icon-man',
+       toolbar:[{
+		iconCls: 'icon-edit',
+		text:'修改',
+		handler: function(){
+		var rowdata=$('#main_content').datagrid('getSelections');
+		if(rowdata.length!=1)
+		$.messager.show({
+		title:'提示信息',
+		msg:'不能同时修改多行!!!',
+		iconCls: 'icon-tip'
+		});
+		else
+		{
+		$('#edit_teacher').dialog('open');
+		$('#edit_teacher_form').get(0).reset();
+		$('#edit_teacher_form').form('load',{
+		id:rowdata[0].id,
+		name:rowdata[0].name,
+		type:rowdata[0].type,
+		institute:rowdata[0].institute
+		});
+		
+		}
+		
+		}
+		},
+		{
+		iconCls: 'icon-cancel',
+		text:'删除',
+		handler: function(){
+		var rowdata=$('#main_content').datagrid('getSelections');
+		if(rowdata.length>0)
+		{var ids='';
+		for(var i=0;i<rowdata.length;i++)
+		{
+		ids+=rowdata[i].id+',';
+		}
+		ids=ids.substring(0, ids.length-1);
+		$.post('delete_teacher.action',{ids:ids},function(data){
+		 $('#main_content').datagrid('reload');
+		});
+		}
+		else
+		
+		$.messager.show({
+		title:'提示信息',
+		msg:'必须选择一行或者多行删除!!!',
+		iconCls: 'icon-tip'
+		});
+		
+		}
+		}],
+		
+		striped:true,//是否显示斑马线
+       pagination:true,//是否显示分页工具栏
+       rownumbers:true,//是否显示行号
+       pagePosition:'bottom',//定义分页工具栏的位置
+       pageSize:'5',//设置一页大小
+       pageList:[5,10,20,30,40,50],//可供选择的分页
+		//singleSelect:true,        //只供单选
+      columns:[[
+      { field:'ck',
+      checkbox:true},{
+     
+      field:'id',
+       title:'用户名',
+       width:200,
+       align:'center'
+       },
+       {
+       field:'name',
+       title:'姓名',
+       width:200,
+       align:'center'
+       }
+       ,{
+       field:'type',
+       title:'类型',
+       width:200,
+       align:'center'
+       }
+       ,{
+       field:'institute',
+       title:'所属学院',
+       width:200,
+       align:'center'
+       }
+       ]]
     
     });
     else if(data=='s_course')
       $('#main_content').datagrid({
+      url:'search_s_course.action',
+      // fitColumns:true,
+       title:'学生课程信息信息表',
+       
+       iconCls:'icon-man',
+       toolbar:[{
+		iconCls: 'icon-edit',
+		text:'修改',
+		handler: function(){
+		
+		
+		$.messager.show({
+		title:'提示信息',
+		msg:'暂不提供对学生课程信息的修改!!!',
+		iconCls: 'icon-tip'
+		});
+		
+		
+		}
+		},
+		{
+		iconCls: 'icon-cancel',
+		text:'删除',
+		handler: function(){
+		var rowdata=$('#main_content').datagrid('getSelections');
+		if(rowdata.length>0)
+		{var s_ids='';
+		var c_ids='';
+		for(var i=0;i<rowdata.length;i++)
+		{
+		s_ids+=rowdata[i].s_id+',';
+		c_ids+=rowdata[i].c_id+',';
+		}
+		
+		s_ids=s_ids.substring(0, s_ids.length-1);
+		c_ids=c_ids.substring(0, c_ids.length-1);
+		console.info(s_ids);
+		$.post('delete_s_course.action',{'s_ids':s_ids,'c_ids':c_ids},function(data){//$.post通过键值对的形式向后台传递数据
+		 $('#main_content').datagrid('reload');
+		});
+		}
+		else
+		
+		$.messager.show({
+		title:'提示信息',
+		msg:'必须选择一行或者多行删除!!!',
+		iconCls: 'icon-tip'
+		});
+		
+		}
+		}],
+		
+		striped:true,//是否显示斑马线
+       pagination:true,//是否显示分页工具栏
+       rownumbers:true,//是否显示行号
+       pagePosition:'bottom',//定义分页工具栏的位置
+       pageSize:'5',//设置一页大小
+       pageList:[5,10,20,30,40,50],//可供选择的分页
+		//singleSelect:true,        //只供单选
+      columns:[[
+      { field:'ck',
+      checkbox:true},{
+     
+      field:'s_id',
+       title:'学生号',
+       width:200,
+       align:'center'
+       },
+       {
+       field:'c_id',
+       title:'课程号',
+       width:200,
+       align:'center'
+       }
+      
+       ]]
     
     });
     else if(data=='course')
       $('#main_content').datagrid({
-    
+    url:'search_course.action',
+      // fitColumns:true,
+       title:'教师课程信息信息表',
+       
+       iconCls:'icon-man',
+       toolbar:[{
+		iconCls: 'icon-edit',
+		text:'修改',
+		handler: function(){
+		
+		
+		$.messager.show({
+		title:'提示信息',
+		msg:'暂不提供对教师课程信息的修改!!!',
+		iconCls: 'icon-tip'
+		});
+		
+		
+		}
+		},
+		{
+		iconCls: 'icon-cancel',
+		text:'删除',
+		handler: function(){
+		var rowdata=$('#main_content').datagrid('getSelections');
+		if(rowdata.length>0)
+		{var c_ids='';
+		
+		for(var i=0;i<rowdata.length;i++)
+		{
+		c_ids+=rowdata[i].c_id+',';
+		
+		}
+		
+		c_ids=c_ids.substring(0, c_ids.length-1);
+		
+		
+		$.post('delete_course.action',{'c_ids':c_ids},function(data){
+		 $('#main_content').datagrid('reload');
+		});
+		}
+		else
+		
+		$.messager.show({
+		title:'提示信息',
+		msg:'必须选择一行或者多行删除!!!',
+		iconCls: 'icon-tip'
+		});
+		
+		}
+		}],
+		
+		striped:true,//是否显示斑马线
+       pagination:true,//是否显示分页工具栏
+       rownumbers:true,//是否显示行号
+       pagePosition:'bottom',//定义分页工具栏的位置
+       pageSize:'5',//设置一页大小
+       pageList:[5,10,20,30,40,50],//可供选择的分页
+		//singleSelect:true,        //只供单选
+      columns:[[
+      { field:'ck',
+      checkbox:true},{
+     
+      field:'c_id',
+       title:'课程号',
+       width:200,
+       align:'center'
+       },
+       {
+       field:'t_id',
+       title:'教师号',
+       width:200,
+       align:'center'
+       },
+        {
+       field:'c_name',
+       title:'课程名称',
+       width:200,
+       align:'center'
+       }
+      
+       ]]
     });
     }
     
@@ -500,6 +806,7 @@
   </head>
       
  <body>
+ 
    <div id="cc" class="easyui-layout" style="width:100%;height:100%;">   
    <div region="north"  height="100px" collapsible=false title="标题"><h1 style="text-align:center">作业管理系统</h1></div>   
    <div region="west" title="功能菜单" width="20%" collapsible=false iconCls="icon-ok">
@@ -517,6 +824,13 @@
 						<li iconCls="icon-man"><a href="#" title="s_course">添加学生课程数据</a></li>
 						<li iconCls="icon-man"><a href="#" title="teacher">添加教师数据</a></li>
 						<li iconCls="icon-man"><a href="#" title="course">添加教师课程数据</a></li>
+					</ul>
+				</div>
+				<div title="系统信息" width="100%" overflow="auto" padding="50px"
+					height="200px" iconCls="icon-more">
+					<ul class="easyui-tree">
+						<li iconCls="icon-lock"><a href="login.jsp" >退出系统</a></li>
+						
 					</ul>
 				</div>
 			</div>
@@ -541,6 +855,68 @@
                </center>
                </form>       
        </div>
+
+			<div id="edit_student" class="easyui-dialog" title="修改学生信息"
+				iconCls="icon-edit" style="width:400px;height:200px;" closed="true">
+				<form action="updata_student" id="edit_student_form" method="post">
+					<table>
+						<tr>
+							<td>用户名:</td>
+							<td><input name="id" type="hidden" /></td>
+						</tr>
+						<tr>
+							<td>姓名:</td>
+							<td><input name="name" /></td>
+						</tr>
+						<tr>
+							<td>类型:</td>
+							<td><input name="type" /></td>
+						</tr>
+						<tr>
+							<td>班级:</td>
+							<td><input name="grade" /></td>
+						</tr>
+						<tr>
+							<td colspan="2"><center>
+									<a class="easyui-linkbutton" iconCls="icon-save"
+										id="submit_edit_student">保存修改</a>
+								</center></td>
+						</tr>
+					</table>
+
+				</form>
+			</div>
+			<div id="edit_teacher" class="easyui-dialog" title="修改教师信息"
+				iconCls="icon-edit" style="width:400px;height:200px;" closed="true">
+				<form action="updata_teacher" id="edit_teacher_form" method="post">
+					<table>
+						<tr>
+							<td>用户名:</td>
+							<td><input name="id" type="hidden" /></td>
+						</tr>
+						<tr>
+							<td>姓名:</td>
+							<td><input name="name" /></td>
+						</tr>
+						<tr>
+							<td>类型:</td>
+							<td><input name="type" /></td>
+						</tr>
+						<tr>
+							<td>所在学院:</td>
+							<td><input name="institute" /></td>
+						</tr>
+						<tr>
+							<td colspan="2"><center>
+									<a class="easyui-linkbutton" iconCls="icon-save"
+										id="submit_edit_teacher">保存修改</a>
+								</center></td>
+						</tr>
+					</table>
+
+				</form>
+			</div>
+
 			<div id="add1" class="easyui-dialog" title="添加学生信息"
 				style="width:400px;height:200px;"
 				data-options="iconCls:'icon-add',resizable:false,modal:true,closed:true">

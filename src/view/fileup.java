@@ -16,7 +16,7 @@ public class fileup {
 	private List<Integer> t_ids=new ArrayList();
 	private List<String> titles=new ArrayList();
 	public String execute(){
-		//²é³öÑ§ºÅÎªidËùÑ¡ÐÞµÄ¿Î³Ì
+		//ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½Îªidï¿½ï¿½Ñ¡ï¿½ÞµÄ¿Î³ï¿½
 		int id=(Integer) ActionContext.getContext().getSession().get("u_id");
 		String grade=(String) ActionContext.getContext().getSession().get("s_grade");
 		Session session=HibernateSessionFactory.getSession();
@@ -26,37 +26,37 @@ public class fileup {
 		List<Integer> c_ids =query.list();
 		int i;
 		for(i=0;i<c_ids.size();i++)
-		{//²éÑ¯½ÌÊ¦ºÅ
+		{//ï¿½ï¿½Ñ¯ï¿½ï¿½Ê¦ï¿½ï¿½
 			hql="select t_id from course where c_id =  :c_id";
 		query =session.createQuery(hql);
 		query.setInteger("c_id",c_ids.get(i)); 
 		for(int j=0;j<query.list().size();j++)
 		t_ids.add((Integer) query.list().get(j));
-		//²éÑ¯¿Î³ÌÃû
+		//ï¿½ï¿½Ñ¯ï¿½Î³ï¿½ï¿½ï¿½
 		hql="select c_name from course where c_id =  :c_id";
 		query =session.createQuery(hql);
 		query.setInteger("c_id",c_ids.get(i)); 
 		courses.add((String) query.list().get(0));
 		}
-		//²éÑ¯½ÌÊ¦Ãû
+		//ï¿½ï¿½Ñ¯ï¿½ï¿½Ê¦ï¿½ï¿½
 		for(i=0;i<t_ids.size();i++)
 		{hql="select name from teacher where id =  :id";
 		query =session.createQuery(hql);
 		query.setInteger("id",t_ids.get(i));
 		teachers.add((String)query.list().get(0));
 		}
-		//ÌâÄ¿Ãû
+		//ï¿½ï¿½Ä¿ï¿½ï¿½
 		hql="select title from t_job where grade =  :grade";
 		query =session.createQuery(hql);
 		query.setString("grade",grade);
 		for(i=0;i<query.list().size();i++)
 		titles.add((String)query.list().get(i));
-		//´æ·Åsession
+		//ï¿½ï¿½ï¿½session
 		ActionContext.getContext().getSession().put("course", courses);
 		
 		ActionContext.getContext().getSession().put("teacher", teachers);
 		ActionContext.getContext().getSession().put("title", titles);
-		System.out.println("²âÊÔ");
+		
 		System.out.println(courses);
 		System.out.println(teachers);
 		System.out.println(titles);

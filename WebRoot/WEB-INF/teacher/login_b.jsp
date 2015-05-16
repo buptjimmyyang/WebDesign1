@@ -44,9 +44,9 @@ background-color:#cc0000;
 <ul>
 <li><a href="t_set_receive1.action" target="right">发布作业</a></li>
 <li><a href="t_set_receive.action" target="right">查收作业</a></li>
-<li><a href="upHistory.action" target="right">作业评分</a></li>
+<li><a href="evaluate_set.action" target="right">作业评分</a></li>
 <li><a href="essay_list.action" target="right">作业问答</a></li>
-<li><a href="#" target="right">统计学生分数</a></li>
+<li><a href="setShowValue.action" target="right">查看学生分数</a></li>
 <li><a href="stu_UpPassword.action" target="right">修改密码</a></li>
 <li><a   onClick="logout();" href="#">退出登录</a></li>
 </ul>

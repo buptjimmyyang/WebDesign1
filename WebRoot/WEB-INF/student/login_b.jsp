@@ -46,7 +46,7 @@ background-color:#cc0000;
 <li><a href="fileup.action" target="right">上传作业</a></li>
 <li><a href="upHistory.action" target="right">查看上传历史</a></li>
 <li><a href="stu_essay_list.action" target="right">作业问答</a></li>
-<li><a href="#" target="right">查看作业分数</a></li>
+<li><a href="showStudentScore.action" target="right">查看作业分数</a></li>
 <li><a href="stu_UpPassword.action" target="right">修改密码</a></li>
 <li><a   onClick="logout();" href="#">退出登录</a></li>
 </ul>

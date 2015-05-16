@@ -13,17 +13,17 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import bean.HibernateSessionFactory;
-import bean.s_job;
-import bean.student;
+import bean.s_course;
+import bean.teacher;
 
 import com.opensymphony.xwork2.ActionContext;
 
-public class search_student {
+public class search_s_course {
 	private String page;
 	private String rows;
 	private HttpServletResponse response;//写回响应
 	private PrintWriter out;
-	int id=(Integer)ActionContext.getContext().getSession().get("search_id");
+	int s_id=(Integer)ActionContext.getContext().getSession().get("search_id");
 	public String getPage() {
 		return page;
 	}
@@ -53,16 +53,16 @@ public class search_student {
     out = null;
     out = response.getWriter();
 	Session session=HibernateSessionFactory.getSession();
-	String hql=" from student where id like :id";//模糊查询
+	String hql=" from s_course where s_id like :s_id";//模糊查询
 	Query query =session.createQuery(hql);
 	query.setFirstResult((p-1)*r);
 	query.setMaxResults(r);
-	query.setString("id",id+"%");
-	List<student> stus=query.list();
+	query.setString("s_id",s_id+"%");
+	List<s_course> stus=query.list();
 	
 	Query query1 =session.createQuery(hql);//查询总的记录数
-	query1.setString("id",id+"%");
-	List<student> stus1=query1.list();//总的记录数保存在stus1
+	query1.setString("s_id",s_id+"%");
+	List<s_course> stus1=query1.list();//总的记录数保存在stus1
 	 session.close();	
 	 JSONObject object=new JSONObject();
 	 object.put("total",stus1.size());
