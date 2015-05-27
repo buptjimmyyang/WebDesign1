@@ -1,6 +1,7 @@
 package view;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -43,12 +44,18 @@ public class evaluate_set {
 		 
 		 }
 		 ActionContext.getContext().getSession().put("grade", grade);
+		 //消除重复班级
+		 HashSet h  =   new  HashSet(grade); 
+		    grade.clear(); 
+		    grade.addAll(h); 
 		 hql="select  title from t_job  where t_id =  :id";//根据教师号找到教师所发布的题目
 		 query =session.createQuery(hql);
 			query.setInteger("id",id);
 			List<String> u4=query.list();
 			ActionContext.getContext().getSession().put("title", u4);
 			session.close();
+			
+			ActionContext.getContext().getSession().put("u_id", id);
 		return "success";
 	}
 }

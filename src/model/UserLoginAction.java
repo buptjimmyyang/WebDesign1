@@ -55,7 +55,13 @@ public void setValidatecode(String validatecode) {
 	this.validatecode = validatecode;
 }
 public String execute() throws UnsupportedEncodingException{
-	//String validate=(String) ActionContext.getContext().getSession().get("validation_code");
+	String validate=(String) ActionContext.getContext().getSession().get("validation_code");//获取图片验证码
+	boolean login;
+	if(validate.equals(validatecode))
+		login=true;
+	else 
+		login=false;
+		
 	//ActionContext.getContext().getSession().put("userid", id);
 //	System.out.println("������֤��Ϊ"+validate);
 //	System.out.println("��ʵ��֤��Ϊ"+validatecode);
@@ -86,20 +92,20 @@ public String execute() throws UnsupportedEncodingException{
 	else
 	{
 		
-		if(u1.getId()==id&&(u1).getPassword().equals(password)&&type.equals("学生")&&u1.getType().equals(type))
+		if(u1.getId()==id&&(u1).getPassword().equals(password)&&type.equals("学生")&&u1.getType().equals(type)&&login)
 		{   ActionContext.getContext().getSession().put("u_id",id);
 		ActionContext.getContext().getSession().put("type","学生");
 			show_tjob.showjob(id);
 			return "studentlogin";
 			}
 			
-		else if(u1.getId()==id&&(u1).getPassword().equals(password)&&type.equals("老师")&&u1.getType().equals(type))
+		else if(u1.getId()==id&&(u1).getPassword().equals(password)&&type.equals("老师")&&u1.getType().equals(type)&&login)
 			{
 			ActionContext.getContext().getSession().put("u_id",id);
 			ActionContext.getContext().getSession().put("type","老师");
 			return "teacherlogin";
 			}
-		else if(u1.getId()==id&&(u1).getPassword().equals(password)&&type.equals("管理员")&&u1.getType().equals(type))
+		else if(u1.getId()==id&&(u1).getPassword().equals(password)&&type.equals("管理员")&&u1.getType().equals(type)&&login)
 		{ActionContext.getContext().getSession().put("u_id",id);
 			return "adminlogin";
 		}

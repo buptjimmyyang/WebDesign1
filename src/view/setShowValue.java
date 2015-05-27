@@ -1,6 +1,7 @@
 package view;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -41,6 +42,10 @@ public String execute(){
 		}
 	 
 	 }
+	 //消除重复班级
+	 HashSet h  =   new  HashSet(grade); 
+	    grade.clear(); 
+	    grade.addAll(h); 
 	 ActionContext.getContext().getSession().put("grade", grade);
 	 session.close();
 	

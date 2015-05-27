@@ -28,7 +28,7 @@
    out.print("</a>");
    
    %></td>
-   <td>发布时间为:<%out.print(essay.get(i).getDatetime()); %></td>
+   <td>发布时间为:<%out.print(essay.get(i).getDatetime().toLocaleString()); %></td>
    </tr>
    <%} %>
     </table>

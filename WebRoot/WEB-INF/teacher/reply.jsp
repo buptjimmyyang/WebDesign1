@@ -60,7 +60,7 @@
  
   <%
   out.print("<p style=\"text-align:right;\">");
-  out.print("发表时间:"+reply.get(i).getDatetime()+"<br>");
+  out.print("发表时间:"+reply.get(i).getDatetime().toLocaleString()+"<br>");
    out.print("</p>");
   
   out.print("</div>");

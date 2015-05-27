@@ -77,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    out.print("</a>");
    
    %></td>
-   <td><%out.print(job.get(i).getDatetime()); %></td>
+   <td><%out.print(job.get(i).getDatetime().toLocaleString()); %></td>
    
    </tr>
    <%} %>

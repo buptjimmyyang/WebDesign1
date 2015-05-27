@@ -26,11 +26,11 @@ public void setFilename(String filename) {
 	this.filename = filename;
 }
 public String getFilename() throws UnsupportedEncodingException{
-    return  URLEncoder.encode(filename,"utf-8");//ÉèÖÃÎÄ¼şÃû±àÂëÎÊÌâ
+    return  URLEncoder.encode(filename,"utf-8");//ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }
 
 public InputStream getDownload1() {
-	System.out.print(filename);
+	//System.out.print(filename);
 	return ServletActionContext.getServletContext().getResourceAsStream(filepath);
 }
 public String execute(){

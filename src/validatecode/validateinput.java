@@ -37,9 +37,9 @@ public String execute() throws IOException{
 	    response.setHeader("Pargma","no-cache");
 	    response.setDateHeader("Expires",0);
 	    PrintWriter out=response.getWriter();
-//ÓÃequels½øĞĞÑéÖ¤ ²»ÄÜÓÃ==
+//ï¿½ï¿½equelsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½==
 	    if(!input.equals(s1.getAttribute("validation_code")))
-	    	out.write("ÑéÖ¤Âë´íÎó");
+	    	out.write("éªŒè¯ç é”™è¯¯");
 	    out.close();
 	    
 	return null;

@@ -66,8 +66,10 @@ public void setMyFileFileName(String myFileFileName) {
 	this.myFileFileName = myFileFileName;
 }
 public String execute() throws IOException{
+	
 	String savepath=null;
 	String savename=title;
+	//System.out.println(savename);
 	int id=(Integer) ActionContext.getContext().getSession().get("u_id");
 	if(myFileFileName==null)//如果文件名为空不保存
 	{savepath="no";
@@ -97,7 +99,7 @@ File toFile=new File(uploadPath+"/"+teacher,savename);
 	//System.out.print(id+""+grade+""+f_course+""+f_teacher+""+f_title+""+"----"+myFileFileName);
 	is.close();
 	os.close();
-	savepath="/WEB-INF/upload/"+teacher+"/"+title;//数据库地址
+	savepath="/WEB-INF/upload/"+teacher+"/"+savename;//数据库地址
 	}
 	save_publish.save(id, title, content, grade, c_name, savepath);//将发布信息保存在t_job数据库中
 	publish_essay.save_essay(title, c_name, id);

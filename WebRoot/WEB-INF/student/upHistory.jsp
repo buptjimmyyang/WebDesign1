@@ -20,12 +20,12 @@
     }
     catch(Exception e){}
    %>
-   <table  border="1" width="550" style="text-align:center;align:center;">
+   <table  border="1" width="650" style="text-align:center;align:center;">
    <tr>
    <td>文件名</td>
    <td>课程名</td>
-   <td>作业题目</td>
-   <td>下载</td>
+   <td width="125px">作业题目</td>
+   <td width="150px">下载</td>
    <td>上传时间</td>
    </tr>
    <%for(i=0;i<l.size();i++){ %>
@@ -36,11 +36,11 @@
    <%String des=l.get(i).getReal_title();
     String title=l.get(i).getS_id()+"_"+l.get(i).getTitle();
     %>
-   <td><%out.print("<a href=\"download.action?filepath="+des+"&filename="+title+"\">"); 
+   <td width="30px"><%out.print("<a href=\"download.action?filepath="+des+"&filename="+title+"\">"); 
    out.print("点击下载文件");
    
    %></a></td>
-   <td><%out.print(l.get(i).getDatetime()); %></td>
+   <td><%out.print(l.get(i).getDatetime().toLocaleString()); %></td>
    </tr>
    <%} %>
     </table>

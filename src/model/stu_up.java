@@ -7,10 +7,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 import modelFactory.stu_upsave;
 
 import org.apache.struts2.ServletActionContext;
+import org.hibernate.Query;
+import org.hibernate.Session;
+
+import bean.HibernateSessionFactory;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -28,12 +33,7 @@ public String getF_course() {
 public void setF_course(String f_course) {
 	this.f_course = f_course;
 }
-public String getF_teacher() {
-	return f_teacher;
-}
-public void setF_teacher(String f_teacher) {
-	this.f_teacher = f_teacher;
-}
+
 public String getF_title() {
 	return f_title;
 }
@@ -55,11 +55,27 @@ public void setMyFileFileName(String myFileFileName) {
 }
 public String execute()  throws IOException{
 	
-	if(myFileFileName==null)//�����ϴ��ļ�����Ϊ��
-	{ActionContext.getContext().getSession().put("stu_suc", "�ļ�����Ϊ���������ϴ�");
+	if(myFileFileName==null)//文件名为空
+	{ActionContext.getContext().getSession().put("stu_suc", "文件名不能为空");
 		return "stu_upsuccess";
 	}
 	int id=(Integer) ActionContext.getContext().getSession().get("u_id");
+	
+	Session session=HibernateSessionFactory.getSession();
+	//取得教师号
+	String hql="select t_id from course where c_name = :c_name and c_id in(select c_id from s_course where s_id = :id)";
+	Query query =session.createQuery(hql);
+	query.setString("c_name",f_course);
+	query.setInteger("id", id);
+	List<Integer> u=query.list();
+	//取得教师名
+	hql="select name from teacher where id = :id";
+	query =session.createQuery(hql);
+	query.setInteger("id", u.get(0));
+	List<String> u1 =query.list();
+	f_teacher=u1.get(0);
+	session.close();
+	System.out.print("teacher"+f_teacher);
 	String grade=(String) ActionContext.getContext().getSession().get("s_grade");
 	String savename=id+"_"+this.getMyFileFileName();
 	InputStream is=new FileInputStream(myFile);
@@ -81,7 +97,7 @@ String visaPath="/WEB-INF/upload/"+"/"+f_teacher+"/"+f_course+"/"+f_title+"/"+gr
 		fgrade.mkdir();
 	  File content=new File(uploadPath+"/"+f_teacher+"/"+f_course+"/"+f_title+"/"+grade+"/"+savename);
 			if(content.exists()){
-				ActionContext.getContext().getSession().put("stu_suc", "�˴���ҵ�Ѿ��ϴ�,�벻Ҫ�ظ��ϴ�");
+				ActionContext.getContext().getSession().put("stu_suc", "上传文件成功");
 				return "stu_upsuccess";
 			}
 	

@@ -32,24 +32,7 @@ for(int i=0;i<l1.size();i++)
  </option>
  <% }%>
   </select>
-  选择老师: <select name="f_teacher">
- <%ArrayList<String> l2=null;
-  try{
  
-  l2=(ArrayList<String>)session.getAttribute("teacher");}
-   catch(Exception e)
-   {
-   out.print("错误");
-   }
-for(int i=0;i<l2.size();i++)
-{
- %>
- <option>
- <% out.print(l2.get(i));%>
- </option>
- <% }%> 
-  
-  </select>
   选择题目: <select name="f_title">
   <%ArrayList<String> l3=null;
   try{

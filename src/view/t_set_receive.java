@@ -1,6 +1,7 @@
 package view;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -32,7 +33,7 @@ public String execute(){
 		query.setInteger("id",i);
 		List<Integer> u2=query.list();
 		for(int j:u2)
-		{hql="select grade from student where id =  :id";//根据学生号找到班级
+		{hql="select distinct grade from student where id =  :id";//根据学生号找到班级
 		 query =session.createQuery(hql);
 			query.setInteger("id",j);
 			List<String> u3=query.list();
@@ -42,6 +43,10 @@ public String execute(){
 		}
 	 
 	 }
+	 //通过set去掉list中的重复值重复值
+	 HashSet h  =   new  HashSet(grade); 
+	    grade.clear(); 
+	    grade.addAll(h); 
 	 ActionContext.getContext().getSession().put("grade", grade);
 	 hql="select  title from t_job  where t_id =  :id";//根据教师号找到教师所发布的题目
 	 query =session.createQuery(hql);

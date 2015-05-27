@@ -21,7 +21,7 @@ public void setId(int id) {
 	this.id = id;
 }
 public String execute(){
-	System.out.print(id+"id===");
+	//System.out.print(id+"id===");
 	Session session=HibernateSessionFactory.getSession();
 	String hql="from t_job where id= :id ";
 	Query query=session.createQuery(hql);

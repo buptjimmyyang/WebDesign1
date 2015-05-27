@@ -57,9 +57,9 @@ public class fileup {
 		ActionContext.getContext().getSession().put("teacher", teachers);
 		ActionContext.getContext().getSession().put("title", titles);
 		
-		System.out.println(courses);
-		System.out.println(teachers);
-		System.out.println(titles);
+//		System.out.println(courses);
+//		System.out.println(teachers);
+//		System.out.println(titles);
 		return "fileup";
 	}
 
