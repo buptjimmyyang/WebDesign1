@@ -41,7 +41,7 @@ public String execute(){
 	int rows=2;
 	
 	Session session=HibernateSessionFactory.getSession();
-	String hql="  from reply where essay_id = :essay_id";//²é³öÀÏÊ¦Ãû
+	String hql="  from reply where essay_id = :essay_id ";//ï¿½ï¿½ï¿½ï¿½ï¿½Ê¦ï¿½ï¿½
 	Query query =session.createQuery(hql);
 	query.setFirstResult((currentpage-1)*rows);
 	query.setMaxResults(rows);

@@ -36,10 +36,19 @@
     <br>
     <br>
     
+     <%
+  
+    ArrayList<Integer> l=null;
+    try{
+    l= (ArrayList<Integer>)session.getAttribute("totalpage") ;
+   request.setAttribute("categories",l);
+    }
+    catch(Exception e){}
+   %>
     <div style="align:bottom;text-align:center;">
- <s:iterator id="page" value="{1,2,3,4,5}">
- <a href="essay_list.action?&currentpage=<s:property value="#page"/>">
- <s:property value="#page"/>
+ <s:iterator var="index" value="#request.categories">
+ <a href="essay_list.action?&currentpage=<s:property value="#index"/>">
+ <s:property value="#index"/>
  </a>&nbsp;
  
   </s:iterator>
